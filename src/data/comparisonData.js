@@ -479,6 +479,6 @@ app.get('/', (req, res) => {
       "Node.js runs a continuous single-threaded process with an event loop. Global variables persist in RAM across all requests, requiring care to prevent memory leaks and race conditions.",
       "In PHP, a fatal error in one user's request only affects that one user. In Node.js, an uncaught exception can crash the entire server process for everyone unless caught."
     ],
-    classroomTip: "This explains why PHP doesn't need an 'app.listen(3000)' loop inside index.php or web.php. The web server (Apache/Nginx) handles the listening socket and triggers PHP per request!"
+    classroomTip: "This explains why PHP doesn't need an 'app.listen(8000)' loop inside index.php or web.php. The web server (Apache/Nginx) handles the listening socket and triggers PHP per request!"
   }
 ];
