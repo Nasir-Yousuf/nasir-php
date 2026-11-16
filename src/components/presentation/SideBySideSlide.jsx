@@ -34,6 +34,13 @@ import { LoopAnimation } from '../animations/LoopAnimation';
 import { FunctionAnimation } from '../animations/FunctionAnimation';
 import { ArrayAnimation } from '../animations/ArrayAnimation';
 import { ClassAnimation } from '../animations/ClassAnimation';
+import { RouterAnimation } from '../animations/RouterAnimation';
+import { ControllerAnimation } from '../animations/ControllerAnimation';
+import { ViewEngineAnimation } from '../animations/ViewEngineAnimation';
+import { TemplateAssemblyAnimation } from '../animations/TemplateAssemblyAnimation';
+import { TableLoopAnimation } from '../animations/TableLoopAnimation';
+import { ComposerAnimation } from '../animations/ComposerAnimation';
+import { ClientServerTimeline } from '../animations/ClientServerTimeline';
 
 // Architecture components
 import { ArchitectureDiagram } from '../architecture/ArchitectureDiagram';
@@ -132,6 +139,20 @@ export function SideBySideSlide({ slide, onNavigatePage }) {
         return <ArrayAnimation />;
       case 'class':
         return <ClassAnimation />;
+      case 'router':
+        return <RouterAnimation />;
+      case 'controller':
+        return <ControllerAnimation />;
+      case 'viewengine':
+        return <ViewEngineAnimation />;
+      case 'assembly':
+        return <TemplateAssemblyAnimation />;
+      case 'tableloop':
+        return <TableLoopAnimation />;
+      case 'composer':
+        return <ComposerAnimation />;
+      case 'timeline':
+        return <ClientServerTimeline />;
       case 'architecture':
         return <ArchitectureDiagram onSelectFile={(file) => setInspectedFile(file)} />;
       case 'journey':

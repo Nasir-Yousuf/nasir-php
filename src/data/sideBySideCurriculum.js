@@ -729,7 +729,7 @@ console.log("Model: " + car.model);`,
     title: "15. The Front Router — web.php",
     titleBn: "১৫. ফ্রন্ট রাউটার — web.php",
     badgeIcon: "network",
-    animation: "architecture",
+    animation: "router",
     phpCode: `<?php
 // Verified web.php from your project:
 require_once "vendor/autoload.php"; 
@@ -791,7 +791,7 @@ app.get('/web.php', (req, res) => {
     title: "16. The Page Controller — HelloWorld.php",
     titleBn: "১৬. পেইজ কন্ট্রোলার — HelloWorld.php",
     badgeIcon: "cpu",
-    animation: "architecture",
+    animation: "controller",
     phpCode: `<?php
 // Verified HelloWorld.php from your project:
 namespace App\\classes;
@@ -860,7 +860,7 @@ class HelloWorld
     title: "17. The View Engine — helpers.php",
     titleBn: "১৭. কাস্টম ভিউ ইঞ্জিন — helpers.php",
     badgeIcon: "wrench",
-    animation: "architecture",
+    animation: "viewengine",
     phpCode: `<?php
 // The 10-line view engine in app/helpers/helpers.php:
 function view($fileName, $data = [], $print = true)
@@ -919,7 +919,7 @@ function view(fileName, data = {}) {
     title: "18. Reusable Templates — header.php & footer.php",
     titleBn: "১৮. পুনর্ব্যবহারযোগ্য টেমপ্লেট — header.php ও footer.php",
     badgeIcon: "layout",
-    animation: "architecture",
+    animation: "assembly",
     phpCode: `<!-- views/includes/header.php -->
 <!DOCTYPE html>
 <html lang="en">
@@ -983,7 +983,7 @@ export function Header() {
     title: "19. Dynamic Page View — views/home.php",
     titleBn: "১৯. ডাইনামিক পেইজ ভিউ — views/home.php",
     badgeIcon: "table",
-    animation: "architecture",
+    animation: "tableloop",
     phpCode: `<?php include "includes/header.php"; ?>
 
 <section class="py-5 bg-secondary-subtle">
@@ -1058,7 +1058,7 @@ export function HomeView({ students }) {
     title: "20. Composer — PSR-4 & Files Autoloading",
     titleBn: "২০. কম্পোজার — PSR-4 ও ফাইলস অটোলোডিং",
     badgeIcon: "file-json",
-    animation: "architecture",
+    animation: "composer",
     phpCode: `// composer.json in php-class-two:
 {
   "name": "php-project/php-project",
@@ -1107,7 +1107,7 @@ export function HomeView({ students }) {
     title: "21. Frontend Assets & The Client-Server Boundary",
     titleBn: "২১. ফ্রন্টএন্ড অ্যাসেটস এবং ক্লায়েন্ট-সার্ভার দেয়াল",
     badgeIcon: "palette",
-    animation: "architecture",
+    animation: "timeline",
     phpCode: `<!-- In footer.php: -->
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
