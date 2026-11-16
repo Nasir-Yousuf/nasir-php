@@ -4,10 +4,14 @@ export const SIDE_BY_SIDE_SLIDES = [
     page: 1,
     type: "cover",
     title: "PHP & JavaScript",
+    titleBn: "পিএইচপি এবং জাভাস্ক্রিপ্ট",
     subtitle: "Side by Side: From Core Basics to Real Architecture (php-class-two)",
+    subtitleBn: "পাশাপাশি তুলনা: মৌলিক ধারণা থেকে বাস্তব প্রজেক্ট আর্কিটেকচার",
     badgeIcon: "code",
     org: "National Institute of Youth Development (NIYD)",
-    footerNote: "Every concept compared side by side — with live interactive code runners!"
+    orgBn: "জাতীয় যুব উন্নয়ন ইনস্টিটিউট",
+    footerNote: "Every concept compared side by side — with live interactive code runners!",
+    footerNoteBn: "প্রতিটি ধারণা পাশাপাশি তুলনা ও লাইভ কোড রানার সহ!"
   },
 
   // Slide 2: Roadmap
@@ -15,11 +19,14 @@ export const SIDE_BY_SIDE_SLIDES = [
     page: 2,
     type: "roadmap",
     title: "Today's Journey — 2 Major Phases",
+    titleBn: "আজকের শিক্ষাক্রম — ২টি মূল পর্যায়",
     subtitle: "Phase 1: Language Basics Side by Side · Phase 2: Deconstructing php-class-two",
+    subtitleBn: "পর্যায় ১: মৌলিক ব্যাকরণ পাশাপাশি তুলনা · পর্যায় ২: php-class-two প্রজেক্ট ডিকনস্ট্রাকশন",
     badgeIcon: "rocket",
     sections: [
       {
         phase: "Phase 1: Language Basics (Side by Side)",
+        phaseBn: "পর্যায় ১: ভাষার মৌলিক বিষয়াদি (পাশাপাশি)",
         topics: [
           "Variables & Data Types",
           "Strings & Operators",
@@ -32,6 +39,7 @@ export const SIDE_BY_SIDE_SLIDES = [
       },
       {
         phase: "Phase 2: The Real php-class-two Project",
+        phaseBn: "পর্যায় ২: বাস্তব php-class-two প্রজেক্ট",
         topics: [
           "Folder Structure Blueprint",
           "web.php (Front Router)",
@@ -50,7 +58,9 @@ export const SIDE_BY_SIDE_SLIDES = [
     page: 3,
     type: "comparison",
     title: "1. Variables — Declaring & Storing Values",
+    titleBn: "১. ভেরিয়েবল — ডাটা তৈরি ও সংরক্ষণ",
     badgeIcon: "box",
+    animation: "variable",
     phpCode: `<?php
 // PHP variables MUST start with '$':
 $name = "Rahim";
@@ -74,7 +84,14 @@ console.log(name + " is " + age + " years old.");`,
       "Forgetting '$' in PHP is the #1 beginner syntax error!",
       "Both languages are dynamically typed (no int/string keyword needed)."
     ],
-    rule: "Rule: Always put '$' before PHP variable names ($age, not age)!"
+    bulletsBn: [
+      "PHP তে প্রতিটি ভেরিয়েবলের আগে '$' চিহ্ন দেওয়া বাধ্যতামূলক ($name, $age)।",
+      "JS তে 'let' (পরিবর্তনশীল) বা 'const' (স্থায়ী) দিয়ে ভেরিয়েবল ঘোষণা করা হয়।",
+      "PHP তে '$' দিতে ভুলে যাওয়া হলো নতুনদের সবচেয়ে সাধারণ ভুল!",
+      "উভয় ভাষাই dynamically typed (int বা string আলাদা লিখতে হয় না)।"
+    ],
+    rule: "Rule: Always put '$' before PHP variable names ($age, not age)!",
+    ruleBn: "সুবর্ণ নিয়ম: PHP ভেরিয়েবলের নামের আগে সবসময় '$' দিতে হবে ($age, শুধু age নয়)!"
   },
 
   // Slide 4: Data Types
@@ -82,7 +99,9 @@ console.log(name + " is " + age + " years old.");`,
     page: 4,
     type: "comparison",
     title: "2. Data Types — What Kind of Data?",
+    titleBn: "২. ডাটা টাইপ — ডাটার প্রকারভেদ",
     badgeIcon: "shapes",
+    animation: "variable",
     phpCode: `<?php
 $city = "Dhaka";    // String
 $price = 99.5;      // Float / Double
@@ -110,11 +129,18 @@ console.log(typeof isOpen);`,
     jsOutput: `string\nnumber\nnumber\nboolean`,
     bullets: [
       "String = text wrapped in quotes \" \" or ' '.",
-      "Numbers = whole integers and decimals.",
+      "Numbers = whole integers and decimals (floats).",
       "Boolean = true or false.",
       "In PHP, use gettype($x); in JS, use typeof x."
     ],
-    rule: "In PHP, decimals are 'double/float', whole numbers are 'integer'."
+    bulletsBn: [
+      "String = কোটেশনের ভেতরে থাকা টেক্সট \" \" বা ' '।",
+      "Numbers = পূর্ণসংখ্যা (integer) এবং দশমিক (float/double)।",
+      "Boolean = true অথবা false সত্য/মিথ্যা মান।",
+      "PHP তে টাইপ জানতে gettype($x) এবং JS তে typeof x ব্যবহার করা হয়।"
+    ],
+    rule: "In PHP, decimals are 'double/float', whole numbers are 'integer'.",
+    ruleBn: "PHP তে দশমিক মান হলো 'double/float', আর পূর্ণসংখ্যা হলো 'integer'।"
   },
 
   // Slide 5: Strings & Concatenation
@@ -122,6 +148,7 @@ console.log(typeof isOpen);`,
     page: 5,
     type: "comparison",
     title: "3. Strings — Joining Text Together",
+    titleBn: "৩. স্ট্রিং — লেখা জোড়া লাগানো",
     badgeIcon: "font",
     phpCode: `<?php
 $name = "Nasir";
@@ -156,7 +183,14 @@ console.log("Length: " + name.length);`,
       "Double quotes \"Hello $name\" in PHP interpolate variables directly.",
       "In JS, use backticks `Hello ${name}` or '+' to join strings."
     ],
-    rule: "Never write 'Hello ' + $name in PHP! Always use the dot: 'Hello ' . $name."
+    bulletsBn: [
+      "সবচেয়ে জরুরি: PHP তে স্ট্রিং জোড়া লাগাতে ডট '.' ব্যবহার করুন, ভুলেও '+' নয়।",
+      "PHP তে '+' চিহ্ন শুধুই গণিতের যোগ করার জন্য (৫ + ৫ = ১০)।",
+      "PHP তে ডাবল কোটেশনে \"Hello $name\" লিখলে ভেরিয়েবলের মান স্বয়ংক্রিয়ভাবে বসে যায়।",
+      "JS তে ব্যাকটিক \`Hello ${name}\` বা '+' ব্যবহার করা হয়।"
+    ],
+    rule: "Never write 'Hello ' + $name in PHP! Always use the dot: 'Hello ' . $name.",
+    ruleBn: "PHP তে কখনোই 'Hello ' + $name লিখবেন না! সবসময় ডট দিন: 'Hello ' . $name।"
   },
 
   // Slide 6: Operators & Math
@@ -164,6 +198,7 @@ console.log("Length: " + name.length);`,
     page: 6,
     type: "comparison",
     title: "4. Math Operators & Shortcuts",
+    titleBn: "৪. গাণিতিক অপারেটর ও শর্টকাট",
     badgeIcon: "hash",
     phpCode: `<?php
 $a = 10;
@@ -204,7 +239,14 @@ console.log(score);`,
       "+= adds to existing value ($score += 10).",
       "++ increments by 1 ($score++)."
     ],
-    rule: "Shortcut: $count++ is identical to count++ in JavaScript."
+    bulletsBn: [
+      "গাণিতিক অপারেটর (+, -, *, /, %) দুটি ভাষাতেই হুবহু এক।",
+      "% চিহ্ন ভাগশেষ বের করে (১০ % ৪ = ২)।",
+      "+= আগের মানের সাথে নতুন মান যোগ করে ($score += 10)।",
+      "++ বর্তমান মান ১ বাড়িয়ে দেয় ($score++)।"
+    ],
+    rule: "Shortcut: $count++ is identical to count++ in JavaScript.",
+    ruleBn: "শর্টকাট: PHP এর $count++ এবং JavaScript এর count++ হুবহু একই কাজ করে।"
   },
 
   // Slide 7: if / else
@@ -212,7 +254,9 @@ console.log(score);`,
     page: 7,
     type: "comparison",
     title: "5. Decisions — if / else",
+    titleBn: "৫. সিদ্ধান্ত গ্রহণ — if / else",
     badgeIcon: "git-fork",
+    animation: "ifelse",
     phpCode: `<?php
 $temperature = 35;
 
@@ -240,7 +284,14 @@ if (temperature > 30) {
       "Syntax is identical in both PHP and JavaScript!",
       "Only ONE of the two blocks executes."
     ],
-    rule: "Use '===' for equality: checks both value AND type."
+    bulletsBn: [
+      "if (শর্ত) { ... } শর্ত সত্য হলে এই অংশ রান করে।",
+      "else { ... } শর্ত মিথ্যা হলে এই অংশ রান করে।",
+      "PHP এবং JavaScript এ if/else এর সিনট্যাক্স হুবহু এক!",
+      "যেকোনো একটি ব্লকই রান করবে, দুটি কখনোই একসাথে নয়।"
+    ],
+    rule: "Use '===' for equality: checks both value AND type.",
+    ruleBn: "মান এবং টাইপ উভয়ই মেলাতে সবসময় '===' ব্যবহার করুন।"
   },
 
   // Slide 8: else if Ladder
@@ -248,7 +299,9 @@ if (temperature > 30) {
     page: 8,
     type: "comparison",
     title: "6. Multi-Way Decisions — else if",
+    titleBn: "৬. বহুস্তরীয় সিদ্ধান্ত — else if লেডার",
     badgeIcon: "list-ordered",
+    animation: "ifelse",
     phpCode: `<?php
 $mark = 75;
 
@@ -287,7 +340,14 @@ console.log("Your grade: " + grade);`,
       "The final else catches everything left.",
       "In PHP, you can write 'elseif' as one word or 'else if' with a space."
     ],
-    rule: "Notice: web.php in your project uses this exact else if ladder to route pages!"
+    bulletsBn: [
+      "উপর থেকে নিচে পর্যায়ক্রমে শর্ত পরীক্ষা করে।",
+      "প্রথম যে শর্তটি সত্য হয় সেখানেই থেমে যায়।",
+      "সবগুলো মিথ্যা হলে শেষের else অংশ রান করে।",
+      "PHP তে 'elseif' একসাথে বা 'else if' আলাদা লিখা যায়।"
+    ],
+    rule: "Notice: web.php in your project uses this exact else if ladder to route pages!",
+    ruleBn: "লক্ষ্য করুন: আপনার প্রজেক্টের web.php ঠিক এই elseif লেডার ব্যবহার করে রাউটিং করে!"
   },
 
   // Slide 9: Loops (for & while)
@@ -295,7 +355,9 @@ console.log("Your grade: " + grade);`,
     page: 9,
     type: "comparison",
     title: "7. Loops — for & while",
+    titleBn: "৭. লুপ — for এবং while",
     badgeIcon: "repeat",
+    animation: "loop",
     phpCode: `<?php
 // for loop:
 for ($i = 1; $i <= 3; $i++) {
@@ -329,7 +391,14 @@ while (count <= 2) {
       "Always increment the counter ($count++) to prevent infinite loops!",
       "Identical control structures between PHP and JS."
     ],
-    rule: "for ($i = 0; $i < count; $i++) is the universal looping standard."
+    bulletsBn: [
+      "কতবার ঘুরবে জানা থাকলে for লুপ ব্যবহার করা সুবিধাজনক।",
+      "শর্ত মিথ্যা না হওয়া পর্যন্ত while লুপ ক্রমাগত ঘুরতে থাকে।",
+      "ইনফিনিট লুপ এড়াতে সবসময় কাউন্টার বৃদ্ধি ($count++) করতে হবে!",
+      "PHP এবং JS এ লুপের গঠন হুবহু এক।"
+    ],
+    rule: "for ($i = 0; $i < count; $i++) is the universal looping standard.",
+    ruleBn: "for ($i = 0; $i < count; $i++) হলো প্রোগ্রামিংয়ের সর্বজনীন লুপ স্ট্যান্ডার্ড।"
   },
 
   // Slide 10: foreach (PHP) vs for...of (JS)
@@ -337,7 +406,9 @@ while (count <= 2) {
     page: 10,
     type: "comparison",
     title: "8. Looping Over Lists — foreach vs for...of",
+    titleBn: "৮. তালিকা পড়া — foreach বনাম for...of",
     badgeIcon: "layers",
+    animation: "array",
     phpCode: `<?php
 $fruits = ["Mango", "Guava", "Lichu"];
 
@@ -371,7 +442,14 @@ fruits.forEach((fruit, key) => {
       "Syntax in JS: for (const item of array) — item comes first.",
       "You will see foreach ($students as $student) inside views/home.php!"
     ],
-    rule: "PHP: foreach ($collection as $item). Clean, safe, no index errors."
+    bulletsBn: [
+      "PHP তে অ্যারে এবং ডাটাবেজ রেজাল্ট পড়ার জন্য 'foreach' সেরা লুপ।",
+      "PHP সিনট্যাক্স: foreach ($array as $item) — মূল অ্যারে আগে বসে!",
+      "JS সিনট্যাক্স: for (const item of array) — একক আইটেম আগে বসে।",
+      "views/home.php তে আপনি দেখতে পাবেন foreach ($students as $student)!"
+    ],
+    rule: "PHP: foreach ($collection as $item). Clean, safe, no index errors.",
+    ruleBn: "PHP: foreach ($collection as $item)। পরিষ্কার, নিরাপদ এবং ইনডেক্স ভুলের কোনো সুযোগ নেই।"
   },
 
   // Slide 11: Functions
@@ -379,7 +457,9 @@ fruits.forEach((fruit, key) => {
     page: 11,
     type: "comparison",
     title: "9. Functions — Reusable Machines",
+    titleBn: "৯. ফাংশন — পুনঃব্যবহারযোগ্য কোড মেশিন",
     badgeIcon: "cpu",
+    animation: "function",
     phpCode: `<?php
 // Function with parameters & return:
 function calculateTotal($price, $qty = 1) {
@@ -411,7 +491,14 @@ console.log("Bill 2: " + bill2);`,
       "Default parameters ($qty = 1) act as fallback if no argument is passed.",
       "helpers.php in your project defines function view($fileName, $data = [])."
     ],
-    rule: "echo shows output; return gives the value back to store in a variable."
+    bulletsBn: [
+      "একবার লিখুন, যেকোনো জায়গায় কল করুন: function name($parameters) { ... }।",
+      "return হিসাব করা মানটি যেখানে ফাংশন ডাকা হয়েছিল সেখানে ফেরত পাঠায়।",
+      "ডিফল্ট প্যারামিটার ($qty = 1) কোনো মান না দিলে স্বয়ংক্রিয়ভাবে ব্যবহৃত হয়।",
+      "আপনার প্রজেক্টের helpers.php ফাইলে view($fileName, $data = []) ফাংশন আছে।"
+    ],
+    rule: "echo shows output; return gives the value back to store in a variable.",
+    ruleBn: "echo স্ক্রিনে দেখায়; আর return মান ফেরত দেয় যা ভেরিয়েবলে সংরক্ষণ করা যায়।"
   },
 
   // Slide 12: Arrays
@@ -419,7 +506,9 @@ console.log("Bill 2: " + bill2);`,
     page: 12,
     type: "comparison",
     title: "10. Indexed Arrays — Ordered Lists",
+    titleBn: "১০. ইনডেক্সড অ্যারে — ক্রমানুযায়ী তালিকা",
     badgeIcon: "layers",
+    animation: "array",
     phpCode: `<?php
 $colors = ["Red", "Green", "Blue"];
 
@@ -453,7 +542,14 @@ console.log(colors[1]);`,
       "In PHP, adding to end is as simple as: $colors[] = 'Yellow';",
       "In JS, adding to end uses: colors.push('Yellow')."
     ],
-    rule: "In PHP: $arr[] = $new_value automatically pushes to the end!"
+    bulletsBn: [
+      "উভয় ভাষাতেই গণনা সবসময় ০ (শূন্য) থেকে শুরু হয়।",
+      "PHP তে count($arr) দৈর্ঘ্য দেয়; JS তে arr.length ব্যবহৃত হয়।",
+      "PHP তে শেষে যোগ করার চমৎকার উপায়: $colors[] = 'Yellow';",
+      "JS তে শেষে যোগ করতে colors.push('Yellow') লিখতে হয়।"
+    ],
+    rule: "In PHP: $arr[] = $new_value automatically pushes to the end!",
+    ruleBn: "PHP তে: $arr[] = $value লিখলেই স্বয়ংক্রিয়ভাবে তালিকায় শেষে যুক্ত হয়!"
   },
 
   // Slide 13: Associative Arrays vs Objects
@@ -461,7 +557,9 @@ console.log(colors[1]);`,
     page: 13,
     type: "comparison",
     title: "11. Associative Arrays (PHP) vs Objects (JS)",
+    titleBn: "১১. অ্যাসোসিয়েটিভ অ্যারে (PHP) বনাম অবজেক্ট (JS)",
     badgeIcon: "key",
+    animation: "array",
     phpCode: `<?php
 // Associative array = named keys:
 $student = [
@@ -493,7 +591,14 @@ console.log(student["email"]);`,
       "In PHP, you MUST write $student['name']. You cannot write $student.name!",
       "The fat arrow '=>' connects keys to values in PHP."
     ],
-    rule: "PHP: ['name' => 'Borno'] is identical to JS: { name: 'Borno' }."
+    bulletsBn: [
+      "PHP তে নামযুক্ত কি-ভ্যালু জোড়াকে 'Associative Array' বলে।",
+      "JavaScript এ এটিকে 'Object' বলা হয়।",
+      "PHP তে $student['name'] লিখতে হয়। $student.name লেখা যায় না!",
+      "PHP তে তীর চিহ্ন '=>' কি এবং ভ্যালুকে যুক্ত করে।"
+    ],
+    rule: "PHP: ['name' => 'Borno'] is identical to JS: { name: 'Borno' }.",
+    ruleBn: "PHP এর ['name' => 'Borno'] এবং JS এর { name: 'Borno' } মূলত একই কাজ করে।"
   },
 
   // Slide 14: Classes & OOP
@@ -501,7 +606,9 @@ console.log(student["email"]);`,
     page: 14,
     type: "comparison",
     title: "12. Classes & Constructors — The Blueprint",
+    titleBn: "১২. ক্লাস এবং কনস্ট্রাক্টর — ব্লুপ্রিন্ট তৈরি",
     badgeIcon: "factory",
+    animation: "class",
     phpCode: `<?php
 // Real Car.php class from your project:
 class Car
@@ -543,7 +650,14 @@ class Car
       "Member access: In PHP use arrow '$this->name'; in JS use 'this.name'.",
       "Notice: $this->name does NOT have a second '$' after the arrow!"
     ],
-    rule: "PHP constructor = __construct(). JS constructor = constructor()."
+    bulletsBn: [
+      "ক্লাস হলো একটি ব্লুপ্রিন্ট (নকশা); আর অবজেক্ট হলো র‍্যামে তৈরি আসল জিনিস।",
+      "কনস্ট্রাক্টর: PHP তে '__construct()'; আর JS তে 'constructor()' লিখতে হয়।",
+      "ক্লাসের ভেতরে প্রপার্টি এক্সেস: PHP তে '$this->name'; JS তে 'this.name'।",
+      "লক্ষ্য করুন: তীর চিহ্নের পর আর ডলার '$' চিহ্ন বসে না ($this->name)!"
+    ],
+    rule: "PHP constructor = __construct(). JS constructor = constructor().",
+    ruleBn: "PHP কনস্ট্রাক্টর = __construct()। JS কনস্ট্রাক্টর = constructor()।"
   },
 
   // Slide 15: Instantiation
@@ -551,7 +665,9 @@ class Car
     page: 15,
     type: "comparison",
     title: "13. Object Instantiation & Method Invocation",
+    titleBn: "১৩. অবজেক্ট তৈরি এবং মেথড কল করা",
     badgeIcon: "box",
+    animation: "class",
     phpCode: `<?php
 // Instantiating the Car object:
 $car = new Car();
@@ -575,7 +691,14 @@ console.log("Model: " + car.model);`,
       "Public properties ($car->color) can be accessed directly.",
       "Both languages instantiate objects with the 'new' keyword."
     ],
-    rule: "PHP uses arrow '->' for method calls ($car->getName()). JS uses dot (car.getName())."
+    bulletsBn: [
+      "'new Car()' কল করলে মেমরিতে অবজেক্ট তৈরি হয় এবং কনস্ট্রাক্টর রান করে।",
+      "বাইরে থেকে কল: PHP তে '$car->method()'; JS তে 'car.method()'।",
+      "পাবলিক প্রপার্টি ($car->color) সরাসরি এক্সেস করা যায়।",
+      "উভয় ভাষাতেই 'new' কি-ওয়ার্ড দিয়ে নতুন অবজেক্ট তৈরি করা হয়।"
+    ],
+    rule: "PHP uses arrow '->' for method calls ($car->getName()). JS uses dot (car.getName()).",
+    ruleBn: "PHP তে মেথড ডাকতে তীর '->' চিহ্ন ($car->getName())। JS তে ডট (car.getName())।"
   },
 
   // Slide 16: Project Transition Cover
@@ -583,7 +706,9 @@ console.log("Model: " + car.model);`,
     page: 16,
     type: "section",
     title: "Phase 2: The Real php-class-two Project",
+    titleBn: "পর্যায় ২: বাস্তব php-class-two প্রজেক্ট",
     subtitle: "Applying everything we just learned into your actual classroom project architecture!",
+    subtitleBn: "আমরা এতক্ষণ যা শিখলাম তা এখন সরাসরি আপনার ক্লাসরুম প্রজেক্টে প্রয়োগ করব!",
     badgeIcon: "folder-git-2"
   },
 
@@ -592,27 +717,9 @@ console.log("Model: " + car.model);`,
     page: 17,
     type: "project-structure",
     title: "14. php-class-two — The Architecture Blueprint",
+    titleBn: "১৪. php-class-two — সম্পূর্ণ আর্কিটেকচার ব্লুপ্রিন্ট",
     badgeIcon: "folder-tree",
-    structureText: `php-class-two/
-├── app/
-│   ├── classes/
-│   │   ├── HelloWorld.php      <-- Page Controller
-│   │   ├── Car.php             <-- OOP Domain Model
-│   │   └── NewClass.php        <-- Practice Class
-│   └── helpers/
-│       └── helpers.php         <-- 10-line Custom View Engine
-├── assets/
-│   ├── css/ (bootstrap.min.css, style.css)
-│   └── js/  (bootstrap.bundle.min.js, main.js)
-├── vendor/
-│   └── autoload.php            <-- Composer Autoloader
-├── views/
-│   ├── includes/ (header.php, footer.php)
-│   ├── home.php, about.php, contact.php, login.php
-│   └── home.html (static mockup)
-├── composer.json               <-- PSR-4 & files config
-├── index.php                   <-- Direct Testbench
-└── web.php                     <-- Web Front Router (?page=home)`
+    animation: "architecture"
   },
 
   // Slide 18: web.php Router
@@ -620,7 +727,9 @@ console.log("Model: " + car.model);`,
     page: 18,
     type: "comparison",
     title: "15. The Front Router — web.php",
+    titleBn: "১৫. ফ্রন্ট রাউটার — web.php",
     badgeIcon: "network",
+    animation: "architecture",
     phpCode: `<?php
 // Verified web.php from your project:
 require_once "vendor/autoload.php"; 
@@ -665,7 +774,14 @@ app.get('/web.php', (req, res) => {
       "Dispatches to the matching method on the HelloWorld controller.",
       "Defaults to index() (the home page) if no page parameter is given."
     ],
-    rule: "This is the Front Controller Pattern used by every professional web framework!"
+    bulletsBn: [
+      "$_GET['page'] ব্রাউজারের URL থেকে কোয়েরি প্যারামিটার পড়ে।",
+      "ন্যাভবারে কেউ 'About' চাপলে web.php?page=about কল হয়।",
+      "HelloWorld কন্ট্রোলারের নির্দিষ্ট মেথডকে চালিয়ে দেয়।",
+      "কোনো পেইজ উল্লেখ না থাকলে ডিফল্টভাবে index() (হোমপেইজ) চালায়।"
+    ],
+    rule: "This is the Front Controller Pattern used by every professional web framework!",
+    ruleBn: "এটিই হলো ফ্রন্ট কন্ট্রোলার প্যাটার্ন — যা লারাভেল বা এক্সপ্রেসের মতো সব ফ্রেমওয়ার্কে ব্যবহৃত হয়!"
   },
 
   // Slide 19: HelloWorld Controller
@@ -673,7 +789,9 @@ app.get('/web.php', (req, res) => {
     page: 19,
     type: "comparison",
     title: "16. The Page Controller — HelloWorld.php",
+    titleBn: "১৬. পেইজ কন্ট্রোলার — HelloWorld.php",
     badgeIcon: "cpu",
+    animation: "architecture",
     phpCode: `<?php
 // Verified HelloWorld.php from your project:
 namespace App\\classes;
@@ -725,7 +843,14 @@ class HelloWorld
       "Instead, it calls view('home', ['students' => $this->students]).",
       "Notice how the student data is an Array of Associative Arrays!"
     ],
-    rule: "Controllers prepare data; Views display HTML."
+    bulletsBn: [
+      "HelloWorld এখানে কন্ট্রোলার: এটি ডাটা নিয়ন্ত্রণ করে এবং কোন ভিউ দেখাবে তা ঠিক করে।",
+      "লক্ষ্য করুন: এটি সরাসরি HTML প্রিন্ট করে না! এতে কোড পরিচ্ছন্ন থাকে।",
+      "বরং এটি view('home', ['students' => $this->students]) কল করে ডাটা পাঠায়।",
+      "ছাত্রদের তথ্যগুলো মূলত 'Array of Associative Arrays' আকারে সাজানো!"
+    ],
+    rule: "Controllers prepare data; Views display HTML.",
+    ruleBn: "কন্ট্রোলারের দায়িত্ব ডাটা প্রস্তুত করা; আর ভিউয়ের দায়িত্ব HTML দেখানো।"
   },
 
   // Slide 20: helpers.php view engine
@@ -733,7 +858,9 @@ class HelloWorld
     page: 20,
     type: "comparison",
     title: "17. The View Engine — helpers.php",
+    titleBn: "১৭. কাস্টম ভিউ ইঞ্জিন — helpers.php",
     badgeIcon: "wrench",
+    animation: "architecture",
     phpCode: `<?php
 // The 10-line view engine in app/helpers/helpers.php:
 function view($fileName, $data = [], $print = true)
@@ -775,7 +902,14 @@ function view(fileName, data = {}) {
       "include $filePath evaluates the PHP tags inside the HTML template.",
       "ob_get_clean() captures the entire final compiled HTML document into a variable."
     ],
-    rule: "ob_start() and extract() are the secret building blocks of modern PHP templating!"
+    bulletsBn: [
+      "ob_start() তাৎক্ষণিক প্রিন্ট না করে পুরো HTML সার্ভার র‍্যাম বাফারে জমা রাখে।",
+      "extract($data) হলো ম্যাজিক: ['students' => $arr] সরাসরি $students ভেরিয়েবল হয়ে যায়!",
+      "include $filePath টেমপ্লেটের ভেতরের পিএইচপি কোড এক্সিকিউট করে।",
+      "ob_get_clean() সম্পূর্ণ প্রস্তুত হওয়া HTML কে একটি ভেরিয়েবলে নিয়ে বাফার খালি করে।"
+    ],
+    rule: "ob_start() and extract() are the secret building blocks of modern PHP templating!",
+    ruleBn: "ob_start() এবং extract() হলো আধুনিক সব PHP টেমপ্লেট ইঞ্জিনের মূল রহস্য!"
   },
 
   // Slide 21: Reusable Partials
@@ -783,7 +917,9 @@ function view(fileName, data = {}) {
     page: 21,
     type: "comparison",
     title: "18. Reusable Templates — header.php & footer.php",
+    titleBn: "১৮. পুনর্ব্যবহারযোগ্য টেমপ্লেট — header.php ও footer.php",
     badgeIcon: "layout",
+    animation: "architecture",
     phpCode: `<!-- views/includes/header.php -->
 <!DOCTYPE html>
 <html lang="en">
@@ -830,7 +966,14 @@ export function Header() {
       "footer.php loads the Bootstrap JavaScript bundle and closes </body></html>.",
       "Every page includes them at the top and bottom."
     ],
-    rule: "Change the navbar once in header.php, and every page updates instantly!"
+    bulletsBn: [
+      "DRY মূলনীতি (Don't Repeat Yourself) — একই কোড বারবার না লিখে আলাদা করা!",
+      "HTML <head>, বুটস্ট্র্যাপ সিএসএস ও ন্যাভবার থাকে header.php তে।",
+      "footer.php ফাইল বুটস্ট্র্যাপ জাভাস্ক্রিপ্ট লোড করে এবং ট্যাগ বন্ধ করে।",
+      "সব পেইজেই শুরু ও শেষে এগুলো include করে নেওয়া হয়।"
+    ],
+    rule: "Change the navbar once in header.php, and every page updates instantly!",
+    ruleBn: "header.php তে একবার ন্যাভবার পরিবর্তন করলেই সব পেইজে তা নিজে থেকেই আপডেট হয়ে যায়!"
   },
 
   // Slide 22: home.php Table
@@ -838,7 +981,9 @@ export function Header() {
     page: 22,
     type: "comparison",
     title: "19. Dynamic Page View — views/home.php",
+    titleBn: "১৯. ডাইনামিক পেইজ ভিউ — views/home.php",
     badgeIcon: "table",
+    animation: "architecture",
     phpCode: `<?php include "includes/header.php"; ?>
 
 <section class="py-5 bg-secondary-subtle">
@@ -896,7 +1041,14 @@ export function HomeView({ students }) {
       "The result is a responsive Bootstrap table with real data.",
       "header.php at top, footer.php at bottom — clean and modular!"
     ],
-    rule: "In PHP templates, foreach is the equivalent of .map() in React JSX."
+    bulletsBn: [
+      "'$students' কোথা থেকে এলো? view() হেল্পার extract() দিয়ে পাঠিয়ে দিয়েছে!",
+      "foreach লুপ প্রতিটি ছাত্রের তথ্যের জন্য নতুন <tr> এবং <td> সারি তৈরি করে।",
+      "ফলাফল হলো একটি চমৎকার রেসপনসিভ বুটস্ট্র্যাপ ডাটা টেবিল।",
+      "উপরে header.php এবং নিচে footer.php — দেখতে পরিচ্ছন্ন ও মডিউলার!"
+    ],
+    rule: "In PHP templates, foreach is the equivalent of .map() in React JSX.",
+    ruleBn: "PHP টেমপ্লেটে foreach লুপ ব্যবহার করা আর React JSX এ .map() ব্যবহার করা একই কথা।"
   },
 
   // Slide 23: composer.json
@@ -904,7 +1056,9 @@ export function HomeView({ students }) {
     page: 23,
     type: "comparison",
     title: "20. Composer — PSR-4 & Files Autoloading",
+    titleBn: "২০. কম্পোজার — PSR-4 ও ফাইলস অটোলোডিং",
     badgeIcon: "file-json",
+    animation: "architecture",
     phpCode: `// composer.json in php-class-two:
 {
   "name": "php-project/php-project",
@@ -936,7 +1090,14 @@ export function HomeView({ students }) {
       "Why is helpers.php in 'files'? Because procedural functions cannot be autoloaded on-demand by classname!",
       "Composer includes helpers.php immediately at boot time so view() is always available."
     ],
-    rule: "PSR-4 is for Classes; 'files' is for procedural Helper functions!"
+    bulletsBn: [
+      "\"App\\\\\": \"app/\" ম্যাপ করে যে App\\ নেমস্পেসটি app/ ফোল্ডারে আছে।",
+      "'new App\\classes\\HelloWorld()' লিখলে কম্পোজার নিজে থেকেই ফাইলটি চিনে নেয়।",
+      "helpers.php কেন 'files' এ রাখা? কারণ ফাংশনকে ক্লাসের মতো ক্লাসনামে অটোলোড করা যায় না!",
+      "কম্পোজার বুট হওয়ার সাথে সাথে helpers.php লোড করে নেয় যাতে view() ফাংশন সরাসরি পাওয়া যায়।"
+    ],
+    rule: "PSR-4 is for Classes; 'files' is for procedural Helper functions!",
+    ruleBn: "PSR-4 হলো ক্লাসের জন্য; আর 'files' হলো সাধারণ হেল্পার ফাংশনের জন্য!"
   },
 
   // Slide 24: Frontend Assets & Client-Server Wall
@@ -944,7 +1105,9 @@ export function HomeView({ students }) {
     page: 24,
     type: "comparison",
     title: "21. Frontend Assets & The Client-Server Boundary",
+    titleBn: "২১. ফ্রন্টএন্ড অ্যাসেটস এবং ক্লায়েন্ট-সার্ভার দেয়াল",
     badgeIcon: "palette",
+    animation: "architecture",
     phpCode: `<!-- In footer.php: -->
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
@@ -976,7 +1139,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "main.js runs inside the client's browser to handle scroll events (sticky nav).",
       "PHP cannot handle mouse clicks directly; JavaScript cannot query MySQL directly."
     ],
-    rule: "PHP = Server (Backend). JavaScript & CSS = Client Browser (Frontend)."
+    bulletsBn: [
+      "assets/css/ ফোল্ডারে বুটস্ট্র্যাপ ও কাস্টম সিএসএস ফাইল থাকে।",
+      "assets/js/ ফোল্ডারে বুটস্ট্র্যাপ বান্ডেল ও main.js থাকে।",
+      "main.js ইউজারের ব্রাউজারে রান করে স্ক্রল ইভেন্ট এবং স্টিকি ন্যাভবার সামলায়।",
+      "PHP সরাসরি মাউস ক্লিক ধরতে পারে না; আর JS সরাসরি ডাটাবেজ এক্সেস করতে পারে না।"
+    ],
+    rule: "PHP = Server (Backend). JavaScript & CSS = Client Browser (Frontend).",
+    ruleBn: "PHP = সার্ভার (ব্যাকএন্ড)। JavaScript ও CSS = ক্লায়েন্ট ব্রাউজার (ফ্রন্টএন্ড)।"
   },
 
   // Slide 25: The Complete Flow
@@ -984,7 +1154,9 @@ document.addEventListener("DOMContentLoaded", function () {
     page: 25,
     type: "comparison",
     title: "22. The Complete Request Journey",
+    titleBn: "২২. পূর্ণাঙ্গ রিকোয়েস্টের যাত্রা",
     badgeIcon: "globe",
+    animation: "journey",
     phpCode: `// The 6-Step Journey of a Request in php-class-two:
 1. User clicks: http://localhost/web.php?page=home
 2. web.php loads vendor/autoload.php
@@ -1009,7 +1181,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "Logic (app/) is isolated from presentation (views/).",
       "Routing (web.php) is separated from data processing (HelloWorld.php)."
     ],
-    rule: "This is how modern software engineers build fast, clean, scalable web applications!"
+    bulletsBn: [
+      "লক্ষ্য করুন php-class-two এর প্রতিটি ফোল্ডার ও ফাইলের আলাদা সুস্পষ্ট দায়িত্ব রয়েছে।",
+      "কোনো ফাইলই ৩৫ লাইনের বেশি বড় নয়!",
+      "লজিক (app/) এবং ডিজাইন (views/) সম্পূর্ণ আলাদা ও স্বাধীন।",
+      "রাউটিং (web.php) এবং ডাটা প্রসেসিং (HelloWorld.php) পুরোপুরি আলাদা।"
+    ],
+    rule: "This is how modern software engineers build fast, clean, scalable web applications!",
+    ruleBn: "ঠিক এভাবেই আধুনিক সফটওয়্যার ইঞ্জিনিয়াররা পরিচ্ছন্ন, দ্রুত ও স্কেলেবল ওয়েব অ্যাপ বানায়!"
   },
 
   // Slide 26: Recap & Congratulations
@@ -1017,14 +1196,38 @@ document.addEventListener("DOMContentLoaded", function () {
     page: 26,
     type: "recap",
     title: "A Full Day — You Made It!",
+    titleBn: "অভিনন্দন — আপনি সফলভাবে শেষ করেছেন!",
     subtitle: "From Language Basics to Real Web Architecture",
+    subtitleBn: "মৌলিক ব্যাকরণ থেকে শুরু করে বাস্তব ওয়েব আর্কিটেকচার পর্যন্ত",
     cards: [
-      { title: "Mastered Basics", text: "Variables ($ vs let/const), dot '.' vs '+', foreach vs for...of, functions." },
-      { title: "Mastered OOP", text: "Classes, constructors, $this-> arrow operator, Car.php blueprint." },
-      { title: "Mastered php-class-two", text: "web.php router, HelloWorld controller, 10-line view engine, Bootstrap views." },
-      { title: "Mastered Autoloading", text: "Composer PSR-4 ('App\\' => 'app/') and why helpers.php is in 'files'." }
+      { 
+        title: "Mastered Basics", 
+        titleBn: "মৌলিক ধারণা সম্পন্ন",
+        text: "Variables ($ vs let/const), dot '.' vs '+', foreach vs for...of, functions.",
+        textBn: "ভেরিয়েবল ($ বনাম let), ডট '.' বনাম '+', foreach বনাম for...of এবং ফাংশন।"
+      },
+      { 
+        title: "Mastered OOP", 
+        titleBn: "অবজেক্ট ওরিয়েন্টেড ধারণা",
+        text: "Classes, constructors, $this-> arrow operator, Car.php blueprint.",
+        textBn: "ক্লাস, কনস্ট্রাক্টর, $this-> তীর চিহ্ন এবং Car.php ব্লুপ্রিন্ট।"
+      },
+      { 
+        title: "Mastered php-class-two", 
+        titleBn: "আর্কিটেকচার দক্ষতা",
+        text: "web.php router, HelloWorld controller, 10-line view engine, Bootstrap views.",
+        textBn: "web.php রাউটার, HelloWorld কন্ট্রোলার, ১০ লাইনের ভিউ ইঞ্জিন ও বুটস্ট্র্যাপ ভিউ।"
+      },
+      { 
+        title: "Mastered Autoloading", 
+        titleBn: "অটোলোডিং রহস্য",
+        text: "Composer PSR-4 ('App\\' => 'app/') and why helpers.php is in 'files'.",
+        textBn: "কম্পোজার PSR-4 ('App\\' => 'app/') এবং কেন helpers.php 'files' এ থাকে।"
+      }
     ],
     qa: "Questions & Hands-on Discussion",
-    instructor: "National Institute of Youth Development (NIYD) · Tarun Soft"
+    qaBn: "প্রশ্নোত্তর ও উন্মুক্ত আলোচনা",
+    instructor: "National Institute of Youth Development (NIYD) · Tarun Soft",
+    instructorBn: "জাতীয় যুব উন্নয়ন ইনস্টিটিউট (NIYD) · তরুণ সফট"
   }
 ];

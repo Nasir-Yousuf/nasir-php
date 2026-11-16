@@ -1,6 +1,7 @@
 import React from 'react';
-import { X, ChevronRight, BookOpen, Layers } from 'lucide-react';
+import { X, ChevronRight, BookOpen } from 'lucide-react';
 import { SIDE_BY_SIDE_SLIDES } from '../../data/sideBySideCurriculum';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function TableOfContentsModal({
   isOpen,
@@ -8,6 +9,7 @@ export function TableOfContentsModal({
   currentPage,
   onSelectPage
 }) {
+  const { t } = useLanguage();
   if (!isOpen) return null;
 
   const phase1Slides = SIDE_BY_SIDE_SLIDES.filter(s => s.page <= 15);
@@ -22,10 +24,10 @@ export function TableOfContentsModal({
             <BookOpen className="w-5 h-5 text-[#FACC15]" />
             <div>
               <h3 className="text-lg font-bold text-white tracking-tight">
-                Curriculum Table of Contents (26 Slides)
+                {t("Curriculum Table of Contents (26 Slides)", "শিক্ষাক্রম সূচিপত্র (২৬টি স্লাইড)")}
               </h3>
               <p className="text-xs text-slate-400">
-                Phase 1: Basics Side by Side · Phase 2: php-class-two Architecture
+                {t("Phase 1: Basics Side by Side · Phase 2: php-class-two Architecture", "পর্যায় ১: মৌলিক ব্যাকরণ পাশাপাশি · পর্যায় ২: বাস্তব প্রজেক্ট আর্কিটেকচার")}
               </p>
             </div>
           </div>
@@ -44,7 +46,7 @@ export function TableOfContentsModal({
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#777BB4] uppercase tracking-wider border-b border-slate-800/80 pb-2">
               <span className="w-5 h-5 rounded bg-[#777BB4]/20 border border-[#777BB4]/40 text-[#a5a9e2] flex items-center justify-center text-[10px]">1</span>
-              <span>Phase 1: Language Basics Side by Side (Slides 1–15)</span>
+              <span>{t("Phase 1: Language Basics Side by Side (Slides 1–15)", "পর্যায় ১: মৌলিক ব্যাকরণ পাশাপাশি (স্লাইড ১–১৫)")}</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -65,7 +67,7 @@ export function TableOfContentsModal({
                   >
                     <div className="truncate mr-2">
                       <span className="text-slate-500 font-semibold mr-1.5">#{slide.page}</span>
-                      <span>{slide.title}</span>
+                      <span>{t(slide.title, slide.titleBn)}</span>
                     </div>
                     <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform ${isCurrent ? 'text-[#a5a9e2]' : 'text-slate-600 group-hover:translate-x-0.5'}`} />
                   </button>
@@ -78,7 +80,7 @@ export function TableOfContentsModal({
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#FACC15] uppercase tracking-wider border-b border-slate-800/80 pb-2">
               <span className="w-5 h-5 rounded bg-[#FACC15]/20 border border-[#FACC15]/40 text-[#FACC15] flex items-center justify-center text-[10px]">2</span>
-              <span>Phase 2: The Real php-class-two Project (Slides 16–26)</span>
+              <span>{t("Phase 2: The Real php-class-two Project (Slides 16–26)", "পর্যায় ২: বাস্তব php-class-two প্রজেক্ট (স্লাইড ১৬–২৬)")}</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -99,7 +101,7 @@ export function TableOfContentsModal({
                   >
                     <div className="truncate mr-2">
                       <span className="text-slate-500 font-semibold mr-1.5">#{slide.page}</span>
-                      <span>{slide.title}</span>
+                      <span>{t(slide.title, slide.titleBn)}</span>
                     </div>
                     <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform ${isCurrent ? 'text-[#FACC15]' : 'text-slate-600 group-hover:translate-x-0.5'}`} />
                   </button>
@@ -111,8 +113,8 @@ export function TableOfContentsModal({
 
         {/* Footer */}
         <div className="p-4 border-t border-slate-800 bg-[#161927] flex items-center justify-between text-xs text-slate-500 font-mono">
-          <span>Press ESC or click anywhere outside to close</span>
-          <span className="text-[#FACC15]">NIYD Classroom Workshop</span>
+          <span>{t("Press ESC or click anywhere outside to close", "বন্ধ করতে ESC চাপুন বা বাইরে ক্লিক করুন")}</span>
+          <span className="text-[#FACC15]">NIYD Workshop</span>
         </div>
       </div>
     </div>

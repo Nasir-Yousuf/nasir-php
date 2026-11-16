@@ -3,13 +3,13 @@ import {
   ChevronLeft, 
   ChevronRight, 
   List, 
-  Sparkles, 
-  Code2,
-  Maximize2,
+  Maximize2, 
   Minimize2,
-  BookOpen
+  Languages
 } from 'lucide-react';
 import { SIDE_BY_SIDE_SLIDES } from '../../data/sideBySideCurriculum';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { ProgressTracker } from '../ui/ProgressTracker';
 
 export function PDFSlideNavbar({
   currentPage,
@@ -18,6 +18,7 @@ export function PDFSlideNavbar({
   isFullscreen,
   onToggleFullscreen
 }) {
+  const { lang, toggleLang, t } = useLanguage();
   const totalPages = SIDE_BY_SIDE_SLIDES.length;
 
   const handlePrev = () => {
@@ -29,20 +30,20 @@ export function PDFSlideNavbar({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-[#161928]/95 backdrop-blur-md px-4 py-2.5">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-[#161928]/95 backdrop-blur-md px-3 sm:px-4 py-2.5">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-        {/* Left: Brand & Roadmap Modal Button */}
+        {/* Left: Brand & TOC button */}
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-xl bg-[#FACC15] flex items-center justify-center font-mono font-black text-slate-950 text-xs shadow-md shadow-yellow-500/10 shrink-0">
             &lt;/&gt;
           </div>
 
-          <div className="hidden sm:block">
+          <div className="hidden md:block">
             <span className="font-bold text-white text-sm tracking-tight block">
-              PHP & JavaScript Side-by-Side
+              {t("PHP & JavaScript Explorer", "পিএইচপি ও জাভাস্ক্রিপ্ট ল্যাব")}
             </span>
             <span className="text-[10px] text-slate-400 font-mono">
-              Basics → php-class-two Architecture · NIYD
+              {t("Visual Architecture & Concepts · NIYD", "ভিজ্যুয়াল আর্কিটেকচার ও কোড ল্যাব · NIYD")}
             </span>
           </div>
 
@@ -53,36 +54,54 @@ export function PDFSlideNavbar({
             title="Browse all 26 slides"
           >
             <List className="w-3.5 h-3.5 text-[#FACC15]" />
-            <span className="hidden md:inline font-mono">All Slides (T)</span>
+            <span className="hidden sm:inline font-mono">{t("All Slides (T)", "সকল স্লাইড (T)")}</span>
           </button>
         </div>
 
-        {/* Center: Quick Phase Switchers */}
-        <div className="flex items-center gap-1.5 bg-[#181a29] p-1 rounded-xl border border-slate-800">
-          <button
-            onClick={() => onNavigatePage(3)}
-            className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
-              currentPage <= 15
-                ? 'bg-[#777BB4] text-white shadow-sm'
-                : 'text-slate-400 hover:text-white hover:bg-[#1e2235]'
-            }`}
-          >
-            Phase 1: Basics (1–15)
-          </button>
-          <button
-            onClick={() => onNavigatePage(16)}
-            className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
-              currentPage >= 16
-                ? 'bg-[#FACC15] text-slate-950 font-black shadow-sm'
-                : 'text-slate-400 hover:text-white hover:bg-[#1e2235]'
-            }`}
-          >
-            Phase 2: php-class-two (16–26)
-          </button>
-        </div>
-
-        {/* Right: Slide Controls & Fullscreen */}
+        {/* Center: Quick Phase Switchers & Progress Tracker */}
         <div className="flex items-center gap-2">
+          {/* Phase 1 / 2 quick switches */}
+          <div className="hidden sm:flex items-center gap-1 bg-[#181a29] p-1 rounded-xl border border-slate-800">
+            <button
+              onClick={() => onNavigatePage(3)}
+              className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
+                currentPage <= 15
+                  ? 'bg-[#777BB4] text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white hover:bg-[#1e2235]'
+              }`}
+            >
+              {t("Phase 1: Basics", "পর্যায় ১: মৌলিক")}
+            </button>
+            <button
+              onClick={() => onNavigatePage(16)}
+              className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
+                currentPage >= 16
+                  ? 'bg-[#FACC15] text-slate-950 font-black shadow-sm'
+                  : 'text-slate-400 hover:text-white hover:bg-[#1e2235]'
+              }`}
+            >
+              {t("Phase 2: Project", "পর্যায় ২: প্রজেক্ট")}
+            </button>
+          </div>
+
+          {/* Progress Tracker */}
+          <ProgressTracker currentPage={currentPage} totalPages={totalPages} />
+        </div>
+
+        {/* Right: Language Toggle & Slide Controls */}
+        <div className="flex items-center gap-2">
+          {/* Language Toggle (English vs বাংলা) */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#1e2235] hover:bg-[#252b42] border border-amber-400/40 text-xs font-mono font-bold transition-all"
+            title="Toggle Language (English / বাংলা)"
+          >
+            <Languages className="w-3.5 h-3.5 text-amber-400" />
+            <span className={lang === 'bn' ? 'text-amber-300 font-black' : 'text-slate-300'}>
+              {lang === 'bn' ? 'বাংলা' : 'EN'}
+            </span>
+          </button>
+
           {/* Prev / Dropdown / Next */}
           <div className="flex items-center gap-1 bg-[#1e2235] p-1 rounded-xl border border-slate-800">
             <button
@@ -98,11 +117,11 @@ export function PDFSlideNavbar({
             <select
               value={currentPage}
               onChange={(e) => onNavigatePage(Number(e.target.value))}
-              className="bg-transparent text-xs font-mono font-bold text-white px-2 py-0.5 focus:outline-none cursor-pointer max-w-[140px] sm:max-w-[200px] truncate"
+              className="bg-transparent text-xs font-mono font-bold text-white px-1.5 py-0.5 focus:outline-none cursor-pointer max-w-[110px] sm:max-w-[160px] truncate"
             >
               {SIDE_BY_SIDE_SLIDES.map((s) => (
                 <option key={s.page} value={s.page} className="bg-slate-900 text-white">
-                  Slide {s.page}: {s.title}
+                  #{s.page}: {t(s.title, s.titleBn)}
                 </option>
               ))}
             </select>
@@ -120,7 +139,7 @@ export function PDFSlideNavbar({
           {/* Fullscreen Button */}
           <button
             onClick={onToggleFullscreen}
-            className="p-2 rounded-xl bg-[#1e2235] hover:bg-[#252b42] text-slate-300 hover:text-white border border-slate-800 transition-colors"
+            className="p-2 rounded-xl bg-[#1e2235] hover:bg-[#252b42] text-slate-300 hover:text-white border border-slate-800 transition-colors hidden sm:flex items-center justify-center"
             title="Toggle Fullscreen (F)"
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
