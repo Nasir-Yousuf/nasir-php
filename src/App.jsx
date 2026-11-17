@@ -78,18 +78,20 @@ function MainAppContent() {
     }
   };
 
+  // When in presentation mode, render exclusively the full-screen presentation deck
+  if (isPresentationMode) {
+    return (
+      <PresentationModeDeck
+        onClose={() => setIsPresentationMode(false)}
+        isFullscreen={isFullscreen}
+        onToggleFullscreen={toggleFullscreen}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#090b14] text-slate-100 flex flex-col font-sans selection:bg-[#FACC15] selection:text-slate-950">
-      {/* Presentation Mode Full-Screen Overlay */}
-      {isPresentationMode && (
-        <PresentationModeDeck
-          onClose={() => setIsPresentationMode(false)}
-          isFullscreen={isFullscreen}
-          onToggleFullscreen={toggleFullscreen}
-        />
-      )}
-
-      {/* Persistent Left Sidebar */}
+      {/* Persistent Left Sidebar (Only in Guide Mode) */}
       <ChapterSidebar
         activeChapterId={activeChapterId}
         onSelectChapter={handleSelectChapter}
