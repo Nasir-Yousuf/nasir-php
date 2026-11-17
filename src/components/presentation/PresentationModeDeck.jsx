@@ -18,6 +18,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 
 // Chapter components embedded in slides
 import { RestaurantAnalogy } from '../chapters/chapter1/RestaurantAnalogy';
+import { RestaurantAnalogyExperience } from '../home/RestaurantAnalogyExperience';
 import { FrontendBackendDbExplainer } from '../chapters/chapter1/FrontendBackendDbExplainer';
 import { WebArchitectureDiagram } from '../chapters/chapter1/WebArchitectureDiagram';
 import { ParticleRequestLifecycle } from '../chapters/chapter1/ParticleRequestLifecycle';
@@ -75,10 +76,10 @@ export function PresentationModeDeck({ onClose, isFullscreen, onToggleFullscreen
     },
     {
       id: "ch1-analogy",
-      chapterBadge: "CHAPTER 01 · 1ST PRINCIPLES",
+      chapterBadge: "SIGNATURE ANALOGY · 1ST PRINCIPLES",
       title: "1. The Restaurant Analogy: Customer, Waiter, Chef & Pantry",
       titleBn: "১. রেস্তোরাঁর উপমা: গ্রাহক, ওয়েটার, শেফ ও কোল্ড স্টোরেজ",
-      component: <RestaurantAnalogy />
+      component: <RestaurantAnalogyExperience />
     },
     {
       id: "ch1-layers",

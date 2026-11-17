@@ -1,5 +1,6 @@
 import React from 'react';
 import { RestaurantAnalogy } from './RestaurantAnalogy';
+import { RestaurantAnalogyExperience } from '../../home/RestaurantAnalogyExperience';
 import { FrontendBackendDbExplainer } from './FrontendBackendDbExplainer';
 import { WebArchitectureDiagram } from './WebArchitectureDiagram';
 import { ParticleRequestLifecycle } from './ParticleRequestLifecycle';
@@ -36,17 +37,14 @@ export function Chapter1View({ onNextChapter }) {
         </div>
       </div>
 
-      {/* 1.1 The Restaurant Analogy */}
+      {/* 1.1 The Signature Restaurant Analogy Experience */}
       <section id="section-1-1" className="space-y-4 scroll-mt-24">
-        <div className="flex items-center gap-3">
-          <span className="w-8 h-8 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center text-sm font-mono">
-            1.1
-          </span>
-          <h2 className="text-xl font-bold text-white">
-            {t("The Restaurant Analogy: Customer, Waiter, Chef & Pantry", "রেস্তোরাঁর উপমা: গ্রাহক, ওয়েটার, শেফ ও কোল্ড স্টোরেজ")}
-          </h2>
-        </div>
-        <RestaurantAnalogy />
+        <RestaurantAnalogyExperience
+          onStartCurriculum={() => {
+            const el = document.getElementById('section-1-2');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }}
+        />
       </section>
 
       {/* 1.2, 1.3, 1.4 Frontend, Backend & Database Deep Dive */}
