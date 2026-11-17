@@ -1,0 +1,100 @@
+import React from 'react';
+import { 
+  Menu, 
+  Languages, 
+  Maximize2, 
+  Minimize2, 
+  Play, 
+  Layers, 
+  ChevronDown 
+} from 'lucide-react';
+import { CHAPTERS_DATA } from '../../data/chaptersData';
+import { useLanguage } from '../../contexts/LanguageContext';
+
+export function AppHeader({
+  activeChapterId,
+  onSelectChapter,
+  onToggleSidebar,
+  onStartPresentation,
+  isFullscreen,
+  onToggleFullscreen
+}) {
+  const { lang, toggleLang, t } = useLanguage();
+  const currentChapter = CHAPTERS_DATA.find(c => c.id === activeChapterId) || CHAPTERS_DATA[0];
+
+  return (
+    <header className="sticky top-0 z-30 w-full border-b border-slate-800 bg-[#0e111e]/90 backdrop-blur-md px-3 sm:px-6 py-2.5">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+        {/* Left: Sidebar Toggle & Chapter Dropdown */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onToggleSidebar}
+            className="p-2 rounded-xl bg-[#171b30] hover:bg-[#202542] text-slate-300 hover:text-white border border-slate-700 lg:hidden"
+            title="Toggle Chapter Menu"
+          >
+            <Menu className="w-4 h-4" />
+          </button>
+
+          {/* Chapter Quick Jumper Dropdown */}
+          <div className="relative">
+            <select
+              value={activeChapterId}
+              onChange={(e) => onSelectChapter(Number(e.target.value))}
+              className="appearance-none bg-[#141829] border border-slate-700 text-xs text-white font-bold py-2 pl-3 pr-8 rounded-xl focus:outline-none focus:border-amber-400 cursor-pointer shadow-sm"
+            >
+              {CHAPTERS_DATA.map((ch) => (
+                <option key={ch.id} value={ch.id}>
+                  {lang === 'bn' ? ch.titleBn : ch.title}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Center: Current Chapter Badge for Desktop */}
+        <div className="hidden md:flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-xs font-mono font-bold text-slate-300">
+            {lang === 'bn' ? currentChapter.titleBn : currentChapter.title}
+          </span>
+        </div>
+
+        {/* Right: Presentation Mode, Language Switcher, Fullscreen */}
+        <div className="flex items-center gap-2">
+          {/* Start Presentation Button */}
+          <button
+            onClick={onStartPresentation}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FACC15] hover:bg-yellow-300 text-slate-950 font-black text-xs shadow-md shadow-yellow-500/10 transition-all hover:scale-105 active:scale-95"
+            title="Enter Slide Presentation Mode (Keyboard: P)"
+          >
+            <Play className="w-3.5 h-3.5 fill-current" />
+            <span className="hidden sm:inline">{t("Presentation Mode", "প্রেজেন্টেশন মোড")}</span>
+          </button>
+
+          {/* Language Switcher */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#171b30] hover:bg-[#202542] border border-amber-400/40 text-xs font-mono font-bold transition-all"
+            title="Toggle Language (English / বাংলা)"
+          >
+            <Languages className="w-3.5 h-3.5 text-amber-400" />
+            <span className={lang === 'bn' ? 'text-amber-300 font-black' : 'text-slate-300'}>
+              {lang === 'bn' ? 'বাংলা' : 'EN'}
+            </span>
+          </button>
+
+          {/* Fullscreen Toggle */}
+          <button
+            onClick={onToggleFullscreen}
+            className="p-1.5 rounded-xl bg-[#171b30] hover:bg-[#202542] text-slate-400 hover:text-white border border-slate-700 text-xs"
+            title="Toggle Fullscreen (F)"
+          >
+            {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+export default AppHeader;

@@ -1,54 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
-import { PDFSlideNavbar } from './components/layout/PDFSlideNavbar';
-import { SideBySideSlide } from './components/presentation/SideBySideSlide';
-import { TableOfContentsModal } from './components/presentation/TableOfContentsModal';
-import { SIDE_BY_SIDE_SLIDES } from './data/sideBySideCurriculum';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChapterSidebar } from './components/layout/ChapterSidebar';
+import { AppHeader } from './components/layout/AppHeader';
+import { PresentationModeDeck } from './components/presentation/PresentationModeDeck';
 
-function MainWorkshopApp() {
-  const { t } = useLanguage();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [direction, setDirection] = useState(1); // 1 = forward, -1 = back
-  const [isTocOpen, setIsTocOpen] = useState(false);
+// 7 Master Chapter Views
+import { Chapter1View } from './components/chapters/chapter1/Chapter1View';
+import { Chapter2View } from './components/chapters/chapter2/Chapter2View';
+import { Chapter3View } from './components/chapters/chapter3/Chapter3View';
+import { Chapter4View } from './components/chapters/chapter4/Chapter4View';
+import { Chapter5View } from './components/chapters/chapter5/Chapter5View';
+import { Chapter6View } from './components/chapters/chapter6/Chapter6View';
+import { Chapter7View } from './components/chapters/chapter7/Chapter7View';
+
+function MainAppContent() {
+  const { lang, t } = useLanguage();
+  const [activeChapterId, setActiveChapterId] = useState(1);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isPresentationMode, setIsPresentationMode] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const totalPages = SIDE_BY_SIDE_SLIDES.length;
-  const currentSlide = SIDE_BY_SIDE_SLIDES.find(s => s.page === currentPage) || SIDE_BY_SIDE_SLIDES[0];
-
+  // Global keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
 
-      if (e.key === 'ArrowRight' || e.key === ' ') {
+      if (e.key === 'p' || e.key === 'P') {
         e.preventDefault();
-        if (currentPage < totalPages) {
-          setDirection(1);
-          setCurrentPage(prev => prev + 1);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        if (currentPage > 1) {
-          setDirection(-1);
-          setCurrentPage(prev => prev - 1);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        setIsPresentationMode(prev => !prev);
       } else if (e.key === 'f' || e.key === 'F') {
         e.preventDefault();
         toggleFullscreen();
-      } else if (e.key === 't' || e.key === 'T') {
-        e.preventDefault();
-        setIsTocOpen(prev => !prev);
-      } else if (e.key === 'Escape') {
-        if (isTocOpen) setIsTocOpen(false);
+      } else if (['1', '2', '3', '4', '5', '6', '7'].includes(e.key) && !isPresentationMode) {
+        setActiveChapterId(Number(e.key));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentPage, totalPages, isTocOpen]);
+  }, [isPresentationMode]);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -62,114 +54,93 @@ function MainWorkshopApp() {
     }
   };
 
-  const handlePrev = () => {
-    if (currentPage > 1) {
-      setDirection(-1);
-      setCurrentPage(currentPage - 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  const handleSelectChapter = (id) => {
+    setActiveChapterId(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      setDirection(1);
-      setCurrentPage(currentPage + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  const renderActiveChapter = () => {
+    switch (activeChapterId) {
+      case 2:
+        return <Chapter2View onNextChapter={() => handleSelectChapter(3)} />;
+      case 3:
+        return <Chapter3View onNextChapter={() => handleSelectChapter(4)} />;
+      case 4:
+        return <Chapter4View onNextChapter={() => handleSelectChapter(5)} />;
+      case 5:
+        return <Chapter5View onNextChapter={() => handleSelectChapter(6)} />;
+      case 6:
+        return <Chapter6View onNextChapter={() => handleSelectChapter(7)} />;
+      case 7:
+        return <Chapter7View onRestartCourse={() => handleSelectChapter(1)} />;
+      default:
+        return <Chapter1View onNextChapter={() => handleSelectChapter(2)} />;
     }
   };
-
-  const progressPercent = (currentPage / totalPages) * 100;
 
   return (
-    <div className="min-h-screen bg-[#0c0e18] text-slate-100 flex flex-col font-sans selection:bg-[#FACC15] selection:text-slate-950">
-      {/* Top Navbar */}
-      <PDFSlideNavbar
-        currentPage={currentPage}
-        onNavigatePage={(p) => {
-          setDirection(p > currentPage ? 1 : -1);
-          setCurrentPage(p);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        onOpenToc={() => setIsTocOpen(true)}
-        isFullscreen={isFullscreen}
-        onToggleFullscreen={toggleFullscreen}
+    <div className="min-h-screen bg-[#090b14] text-slate-100 flex flex-col font-sans selection:bg-[#FACC15] selection:text-slate-950">
+      {/* Presentation Mode Full-Screen Overlay */}
+      {isPresentationMode && (
+        <PresentationModeDeck
+          onClose={() => setIsPresentationMode(false)}
+          isFullscreen={isFullscreen}
+          onToggleFullscreen={toggleFullscreen}
+        />
+      )}
+
+      {/* Persistent Left Sidebar */}
+      <ChapterSidebar
+        activeChapterId={activeChapterId}
+        onSelectChapter={handleSelectChapter}
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        onStartPresentation={() => setIsPresentationMode(true)}
       />
 
-      {/* Slide Progress Line */}
-      <div className="w-full bg-[#181a29] h-1.5 relative overflow-hidden">
-        <div
-          className="bg-gradient-to-r from-[#FACC15] via-amber-400 to-[#777BB4] h-1.5 transition-all duration-300"
-          style={{ width: `${progressPercent}%` }}
+      {/* Main Content Area offset by sidebar on desktop */}
+      <div className="lg:pl-80 flex flex-col min-h-screen">
+        {/* Top Navbar */}
+        <AppHeader
+          activeChapterId={activeChapterId}
+          onSelectChapter={handleSelectChapter}
+          onToggleSidebar={() => setIsSidebarOpen(prev => !prev)}
+          onStartPresentation={() => setIsPresentationMode(true)}
+          isFullscreen={isFullscreen}
+          onToggleFullscreen={toggleFullscreen}
         />
-      </div>
 
-      {/* Main Slide Viewer Canvas with Smooth Framer Motion Transitions */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 lg:p-8 flex flex-col justify-center">
-        <div className="space-y-6">
+        {/* Chapter Dynamic Viewport */}
+        <main className="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8">
           <AnimatePresence mode="wait">
             <motion.div
-              key={currentPage}
-              initial={{ opacity: 0, x: direction * 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -direction * 40 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              key={activeChapterId}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25 }}
             >
-              <SideBySideSlide
-                slide={currentSlide}
-                onNavigatePage={(p) => {
-                  setDirection(p > currentPage ? 1 : -1);
-                  setCurrentPage(p);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              />
+              {renderActiveChapter()}
             </motion.div>
           </AnimatePresence>
+        </main>
 
-          {/* Bottom Floating Navigation Toolbar */}
-          <div className="flex items-center justify-between p-3.5 rounded-2xl bg-[#141828]/95 border border-slate-800 shadow-xl backdrop-blur-md">
-            <button
-              onClick={handlePrev}
-              disabled={currentPage <= 1}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1e2235] hover:bg-[#252b42] disabled:opacity-30 disabled:hover:bg-[#1e2235] text-white text-xs font-bold transition-all shadow-sm"
-            >
-              <ChevronLeft className="w-4 h-4" />
-              <span>{t("Previous Slide", "পূর্ববর্তী স্লাইড")}</span>
-            </button>
-
-            {/* Slide Indicator & Keyboard Hint */}
-            <div className="flex items-center gap-3 text-xs font-mono">
-              <span className="font-bold text-white px-2.5 py-1 rounded-lg bg-[#1e2235] border border-slate-800">
-                Slide {currentPage} / {totalPages}
-              </span>
-              <span className="hidden md:inline text-slate-500">•</span>
-              <span className="hidden md:inline text-slate-400">
-                {t("Use Arrow keys", "কিবোর্ড বাটন")} <kbd className="px-1.5 py-0.5 rounded bg-[#1e2235] border border-slate-700 text-slate-300">←</kbd> / <kbd className="px-1.5 py-0.5 rounded bg-[#1e2235] border border-slate-700 text-slate-300">→</kbd> {t("or", "বা")} <kbd className="px-1.5 py-0.5 rounded bg-[#1e2235] border border-slate-700 text-slate-300">Space</kbd>
-              </span>
-            </div>
-
-            <button
-              onClick={handleNext}
-              disabled={currentPage >= totalPages}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FACC15] hover:bg-yellow-300 disabled:opacity-30 text-slate-950 font-black text-xs shadow-lg shadow-yellow-500/10 transition-all hover:scale-105 active:scale-95"
-            >
-              <span>{currentPage === totalPages ? t("Completed!", "সম্পূর্ণ!") : t("Next Slide", "পরবর্তী স্লাইড")}</span>
-              <ChevronRight className="w-4 h-4 stroke-[3]" />
-            </button>
-          </div>
-        </div>
-      </main>
-
-      {/* Table of Contents Modal */}
-      <TableOfContentsModal
-        isOpen={isTocOpen}
-        onClose={() => setIsTocOpen(false)}
-        currentPage={currentPage}
-        onSelectPage={(p) => {
-          setDirection(p > currentPage ? 1 : -1);
-          setCurrentPage(p);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-      />
+        {/* Footer */}
+        <footer className="border-t border-slate-800 bg-[#0c0e18] px-4 py-6 text-center text-xs text-slate-500 font-mono">
+          <p>
+            {t(
+              "PHP & Web Architecture Explorer · National Institute of Youth Development (NIYD)",
+              "পিএইচপি ও ওয়েব আর্কিটেকচার ল্যাব · জাতীয় যুব উন্নয়ন ইনস্টিটিউট (NIYD)"
+            )}
+          </p>
+          <p className="mt-1 text-[11px] text-slate-600">
+            {t(
+              "Keyboard Shortcuts: [1-7] Jump Chapters · [P] Presentation Mode · [F] Fullscreen",
+              "কিবোর্ড শর্টকাট: [১-৭] অধ্যায় পরিবর্তন · [P] প্রেজেন্টেশন মোড · [F] ফুলস্ক্রিন"
+            )}
+          </p>
+        </footer>
+      </div>
     </div>
   );
 }
@@ -177,7 +148,7 @@ function MainWorkshopApp() {
 export function App() {
   return (
     <LanguageProvider>
-      <MainWorkshopApp />
+      <MainAppContent />
     </LanguageProvider>
   );
 }
