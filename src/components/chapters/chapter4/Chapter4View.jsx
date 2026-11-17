@@ -35,12 +35,12 @@ export function Chapter4View({ onNextChapter }) {
       </div>
 
       {/* 4.1 - 4.7 Array Deep Dive */}
-      <section className="space-y-4">
+      <section id="section-4-1" className="space-y-4 scroll-mt-24">
         <ArrayDeepDive />
       </section>
 
       {/* 4.8 Interactive Array Playground */}
-      <section className="space-y-4">
+      <section id="section-4-6" className="space-y-4 scroll-mt-24">
         <ArrayPlayground />
       </section>
 

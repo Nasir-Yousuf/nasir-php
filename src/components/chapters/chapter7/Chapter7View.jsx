@@ -41,7 +41,7 @@ export function Chapter7View({ onRestartCourse }) {
       </div>
 
       {/* 7.1 - 7.3 Project Architecture Section */}
-      <section className="space-y-4">
+      <section id="section-7-1" className="space-y-4 scroll-mt-24">
         <ProjectArchitectureSection />
       </section>
 

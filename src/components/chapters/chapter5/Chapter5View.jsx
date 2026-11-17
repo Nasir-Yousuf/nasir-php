@@ -34,7 +34,7 @@ export function Chapter5View({ onNextChapter }) {
       </div>
 
       {/* 5.1 - 5.7 Why PHP Content */}
-      <section className="space-y-4">
+      <section id="section-5-1" className="space-y-4 scroll-mt-24">
         <WhyPhpComparison />
       </section>
 

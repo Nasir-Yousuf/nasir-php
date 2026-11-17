@@ -136,15 +136,24 @@ export function ChapterSidebar({
                 {/* Subtopic drawer when active */}
                 {isSelected && (
                   <div className="pl-9 pr-2 py-1 space-y-1 border-l-2 border-amber-400/30 ml-4 my-1">
-                    {ch.subtopics.map((sub) => (
-                      <div
-                        key={sub.id}
-                        className="text-[11px] font-mono text-slate-300 hover:text-amber-300 flex items-center gap-1.5 py-0.5 transition-colors cursor-default"
-                      >
-                        <span className="text-[9px] text-amber-400/80 font-bold">{sub.id}</span>
-                        <span className="truncate">{lang === 'bn' ? sub.titleBn : sub.title}</span>
-                      </div>
-                    ))}
+                    {ch.subtopics.map((sub) => {
+                      const targetSectionId = `section-${sub.id.replace('.', '-')}`;
+                      return (
+                        <button
+                          key={sub.id}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            onSelectChapter(ch.id, targetSectionId);
+                            if (window.innerWidth < 1024) onClose();
+                          }}
+                          className="w-full text-left text-[11px] font-mono text-slate-300 hover:text-amber-300 hover:bg-slate-800/70 rounded-lg px-2 py-1.5 flex items-center gap-1.5 transition-all group cursor-pointer"
+                        >
+                          <span className="text-[9px] text-amber-400 font-bold group-hover:text-amber-300 shrink-0">{sub.id}</span>
+                          <span className="truncate">{lang === 'bn' ? sub.titleBn : sub.title}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
               </div>

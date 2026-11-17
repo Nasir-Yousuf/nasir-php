@@ -34,7 +34,7 @@ export function Chapter3View({ onNextChapter }) {
       </div>
 
       {/* 3.1 - 3.5 Transformation Pipeline */}
-      <section className="space-y-4">
+      <section id="section-3-1" className="space-y-4 scroll-mt-24">
         <DataTransformationPipeline />
       </section>
 

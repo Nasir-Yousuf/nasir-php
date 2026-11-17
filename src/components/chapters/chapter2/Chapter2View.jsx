@@ -35,7 +35,7 @@ export function Chapter2View({ onNextChapter }) {
       </div>
 
       {/* 2.1 & 2.2 Relational & Document Storage */}
-      <section className="space-y-4">
+      <section id="section-2-1" className="space-y-4 scroll-mt-24">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-xl bg-purple-500 text-white font-black flex items-center justify-center text-sm font-mono">
             2.1
@@ -48,7 +48,7 @@ export function Chapter2View({ onNextChapter }) {
       </section>
 
       {/* 2.4 SQL Query Demonstration */}
-      <section className="space-y-4">
+      <section id="section-2-3" className="space-y-4 scroll-mt-24">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center text-sm font-mono">
             2.2

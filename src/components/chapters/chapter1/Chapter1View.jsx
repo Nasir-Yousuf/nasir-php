@@ -37,7 +37,7 @@ export function Chapter1View({ onNextChapter }) {
       </div>
 
       {/* 1.1 The Restaurant Analogy */}
-      <section className="space-y-4">
+      <section id="section-1-1" className="space-y-4 scroll-mt-24">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center text-sm font-mono">
             1.1
@@ -50,7 +50,7 @@ export function Chapter1View({ onNextChapter }) {
       </section>
 
       {/* 1.2, 1.3, 1.4 Frontend, Backend & Database Deep Dive */}
-      <section className="space-y-4">
+      <section id="section-1-2" className="space-y-4 scroll-mt-24">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-xl bg-cyan-400 text-slate-950 font-black flex items-center justify-center text-sm font-mono">
             1.2
@@ -63,10 +63,10 @@ export function Chapter1View({ onNextChapter }) {
       </section>
 
       {/* 1.5 Web Architecture Diagram */}
-      <section className="space-y-4">
+      <section id="section-1-5" className="space-y-4 scroll-mt-24">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-xl bg-purple-400 text-slate-950 font-black flex items-center justify-center text-sm font-mono">
-            1.3
+            1.5
           </span>
           <h2 className="text-xl font-bold text-white">
             {t("Interactive Architecture Blueprint", "ইন্টারেক্টিভ আর্কিটেকচার ব্লুপ্রিন্ট")}
@@ -76,10 +76,10 @@ export function Chapter1View({ onNextChapter }) {
       </section>
 
       {/* 1.6 Animated Request Lifecycle */}
-      <section className="space-y-4">
+      <section id="section-1-6" className="space-y-4 scroll-mt-24">
         <div className="flex items-center gap-3">
           <span className="w-8 h-8 rounded-xl bg-emerald-400 text-slate-950 font-black flex items-center justify-center text-sm font-mono">
-            1.4
+            1.6
           </span>
           <h2 className="text-xl font-bold text-white">
             {t("Micro-Step Request Lifecycle Simulator", "ধাপে ধাপে রিকোয়েস্ট লাইফসাইকেল সিমুলেটর")}

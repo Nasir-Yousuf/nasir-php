@@ -34,7 +34,7 @@ export function Chapter6View({ onNextChapter }) {
       </div>
 
       {/* 6.1 - 6.10 Fundamentals Section */}
-      <section className="space-y-4">
+      <section id="section-6-1" className="space-y-4 scroll-mt-24">
         <PhpFundamentalsSection />
       </section>
 

@@ -54,13 +54,26 @@ function MainAppContent() {
     }
   };
 
-  const handleSelectChapter = (id) => {
-    setActiveChapterId(id);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleSelectChapter = (id, targetSectionId = null) => {
+    const numId = Number(id);
+    setActiveChapterId(numId);
+    if (targetSectionId) {
+      setTimeout(() => {
+        const el = document.getElementById(targetSectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const renderActiveChapter = () => {
-    switch (activeChapterId) {
+    const chId = Number(activeChapterId);
+    switch (chId) {
       case 2:
         return <Chapter2View onNextChapter={() => handleSelectChapter(3)} />;
       case 3:
