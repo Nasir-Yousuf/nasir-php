@@ -5,7 +5,7 @@ import { ChapterSidebar } from './components/layout/ChapterSidebar';
 import { AppHeader } from './components/layout/AppHeader';
 import { PresentationModeDeck } from './components/presentation/PresentationModeDeck';
 
-// 16 Master Learning Modules
+// 15 Master Curriculum Learning Modules
 import { Module1Web } from './components/modules/Module1Web';
 import { Module2Database } from './components/modules/Module2Database';
 import { Module3DataTravel } from './components/modules/Module3DataTravel';
@@ -19,9 +19,8 @@ import { Module10Functions } from './components/modules/Module10Functions';
 import { Module11Classes } from './components/modules/Module11Classes';
 import { Module12MultipleFiles } from './components/modules/Module12MultipleFiles';
 import { Module13Forms } from './components/modules/Module13Forms';
-import { Module14ComparisonLab } from './components/modules/Module14ComparisonLab';
-import { Module15WhyPhp } from './components/modules/Module15WhyPhp';
-import { Module16Project } from './components/modules/Module16Project';
+import { Module14Project } from './components/modules/Module14Project';
+import { Module15ComparisonLab } from './components/modules/Module15ComparisonLab';
 
 function MainAppContent() {
   const { lang, t } = useLanguage();
@@ -43,7 +42,7 @@ function MainAppContent() {
         toggleFullscreen();
       } else if (e.key === 'ArrowRight' && e.altKey && !isPresentationMode) {
         e.preventDefault();
-        setActiveChapterId(prev => Math.min(16, prev + 1));
+        setActiveChapterId(prev => Math.min(15, prev + 1));
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (e.key === 'ArrowLeft' && e.altKey && !isPresentationMode) {
         e.preventDefault();
@@ -73,7 +72,12 @@ function MainAppContent() {
     setActiveChapterId(numId);
     if (targetSectionId) {
       setTimeout(() => {
-        const el = document.getElementById(targetSectionId);
+        const altId1 = targetSectionId;
+        const altId2 = targetSectionId.startsWith('sec-') 
+          ? targetSectionId.replace('sec-', 'section-') 
+          : targetSectionId.replace('section-', 'sec-');
+        
+        const el = document.getElementById(altId1) || document.getElementById(altId2);
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
@@ -115,11 +119,9 @@ function MainAppContent() {
       case 13:
         return <Module13Forms onNextModule={() => handleSelectChapter(14)} />;
       case 14:
-        return <Module14ComparisonLab onNextModule={() => handleSelectChapter(15)} />;
+        return <Module14Project onNextModule={() => handleSelectChapter(15)} />;
       case 15:
-        return <Module15WhyPhp onNextModule={() => handleSelectChapter(16)} />;
-      case 16:
-        return <Module16Project onRestartCourse={() => handleSelectChapter(1)} />;
+        return <Module15ComparisonLab onRestartCourse={() => handleSelectChapter(1)} />;
       default:
         return <Module1Web onNextModule={() => handleSelectChapter(2)} />;
     }
@@ -178,14 +180,14 @@ function MainAppContent() {
         <footer className="border-t border-slate-800 bg-[#0a0d18] px-4 py-6 text-center text-xs text-slate-500 font-mono">
           <p>
             {t(
-              "PHP & Web Architecture Learning Academy · 16 Comprehensive Modules · National Institute of Youth Development (NIYD)",
-              "পিএইচপি ও ওয়েব আর্কিটেকচার লার্নিং একাডেমি · ১৬টি পূর্ণাঙ্গ মডিউল · জাতীয় যুব উন্নয়ন ইনস্টিটিউট (NIYD)"
+              "PHP Interactive Learning Academy · 15 Step-by-Step Modules · National Institute of Youth Development (NIYD)",
+              "পিএইচপি ইন্টারেক্টিভ লার্নিং একাডেমি · ১৫টি ধারাবাহিক মডিউল · জাতীয় যুব উন্নয়ন ইনস্টিটিউট (NIYD)"
             )}
           </p>
           <p className="mt-1 text-[11px] text-slate-600">
             {t(
-              "Keyboard Shortcuts: [Alt + ← / →] Switch Modules · [P] Presentation Deck · [F] Fullscreen",
-              "কিবোর্ড শর্টকাট: [Alt + ← / →] মডিউল পরিবর্তন · [P] প্রেজেন্টেশন ডেক · [F] ফুলস্ক্রিন"
+              "Keyboard Shortcuts: [Alt + ← / →] Switch Modules · [P] Presentation Mode · [F] Fullscreen",
+              "কিবোর্ড শর্টকাট: [Alt + ← / →] মডিউল পরিবর্তন · [P] প্রেজেন্টেশন মোড · [F] ফুলস্ক্রিন"
             )}
           </p>
         </footer>

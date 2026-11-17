@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrayDeepDive } from '../chapters/chapter4/ArrayDeepDive';
 import { ArrayPlayground } from '../chapters/chapter4/ArrayPlayground';
+import { ArrayAnimation } from '../animations/ArrayAnimation';
 import { Layers, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
@@ -37,6 +38,19 @@ export function Module7Arrays({ onNextModule }) {
       {/* 7.1 - 7.7 Deep Dive */}
       <section id="sec-7-1" className="space-y-4 scroll-mt-24">
         <ArrayDeepDive />
+      </section>
+
+      {/* Step 6 Animated Visualizer: Memory Allocation of Array Elements */}
+      <section className="space-y-4">
+        <div className="flex items-center gap-3">
+          <span className="w-8 h-8 rounded-xl bg-indigo-500 text-white font-black flex items-center justify-center text-sm font-mono">
+            7.7
+          </span>
+          <h2 className="text-xl font-bold text-white">
+            {t("Animated Array Memory Allocation & Foreach Traversal", "অ্যারে মেমোরি এলিমেন্ট ও ফোরইচ অ্যানিমেশন")}
+          </h2>
+        </div>
+        <ArrayAnimation />
       </section>
 
       {/* 7.8 Live Array Laboratory */}

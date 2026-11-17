@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { VariableAnimation } from '../animations/VariableAnimation';
 
 export function Module5Variables({ onNextModule }) {
   const { lang, t } = useLanguage();
@@ -193,6 +194,11 @@ export function Module5Variables({ onNextModule }) {
               </span>
             </div>
           </div>
+        </div>
+
+        {/* Step 6 Execution Animation: Memory Allocation in RAM */}
+        <div className="mt-4">
+          <VariableAnimation />
         </div>
       </section>
 

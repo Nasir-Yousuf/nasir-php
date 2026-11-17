@@ -30,7 +30,7 @@ import { WhyPhpComparison } from '../chapters/chapter5/WhyPhpComparison';
 import { PhpFundamentalsSection } from '../chapters/chapter6/PhpFundamentalsSection';
 import { ProjectArchitectureSection } from '../chapters/chapter7/ProjectArchitectureSection';
 import { ComputerExecutionDiagram } from '../common/ComputerExecutionDiagram';
-import { Module14ComparisonLab } from '../modules/Module14ComparisonLab';
+import { Module15ComparisonLab } from '../modules/Module15ComparisonLab';
 
 export function PresentationModeDeck({ onClose, isFullscreen, onToggleFullscreen }) {
   const { lang, toggleLang, t } = useLanguage();
@@ -152,10 +152,10 @@ export function PresentationModeDeck({ onClose, isFullscreen, onToggleFullscreen
     },
     {
       id: "comparison-lab",
-      chapterBadge: "SYNTHESIS & COMPARISON",
+      chapterBadge: "MODULE 15 · SYNTHESIS & COMPARISON",
       title: "12. PHP vs JavaScript Interactive Translation Lab",
       titleBn: "১২. পিএইচপি বনাম জাভাস্ক্রিপ্ট অনুবাদ ও সিনট্যাক্স ল্যাব",
-      component: <Module14ComparisonLab />
+      component: <Module15ComparisonLab />
     },
     {
       id: "ch5-whyphp",
