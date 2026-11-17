@@ -5,10 +5,9 @@ import {
   Maximize2, 
   Minimize2, 
   Play, 
-  Layers, 
   ChevronDown 
 } from 'lucide-react';
-import { CHAPTERS_DATA } from '../../data/chaptersData';
+import { MODULES_DATA } from '../../data/modulesData';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export function AppHeader({
@@ -20,31 +19,31 @@ export function AppHeader({
   onToggleFullscreen
 }) {
   const { lang, toggleLang, t } = useLanguage();
-  const currentChapter = CHAPTERS_DATA.find(c => c.id === activeChapterId) || CHAPTERS_DATA[0];
+  const currentModule = MODULES_DATA.find(m => m.id === activeChapterId) || MODULES_DATA[0];
 
   return (
     <header className="sticky top-0 z-30 w-full border-b border-slate-800 bg-[#0e111e]/90 backdrop-blur-md px-3 sm:px-6 py-2.5">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-        {/* Left: Sidebar Toggle & Chapter Dropdown */}
+        {/* Left: Sidebar Toggle & Module Dropdown */}
         <div className="flex items-center gap-3">
           <button
             onClick={onToggleSidebar}
             className="p-2 rounded-xl bg-[#171b30] hover:bg-[#202542] text-slate-300 hover:text-white border border-slate-700 lg:hidden"
-            title="Toggle Chapter Menu"
+            title="Toggle Curriculum Menu"
           >
             <Menu className="w-4 h-4" />
           </button>
 
-          {/* Chapter Quick Jumper Dropdown */}
+          {/* Module Quick Jumper Dropdown */}
           <div className="relative">
             <select
               value={activeChapterId}
               onChange={(e) => onSelectChapter(Number(e.target.value))}
-              className="appearance-none bg-[#141829] border border-slate-700 text-xs text-white font-bold py-2 pl-3 pr-8 rounded-xl focus:outline-none focus:border-amber-400 cursor-pointer shadow-sm"
+              className="appearance-none bg-[#141829] border border-slate-700 text-xs text-white font-bold py-2 pl-3 pr-8 rounded-xl focus:outline-none focus:border-amber-400 cursor-pointer shadow-sm max-w-[200px] sm:max-w-xs md:max-w-sm truncate"
             >
-              {CHAPTERS_DATA.map((ch) => (
-                <option key={ch.id} value={ch.id}>
-                  {lang === 'bn' ? ch.titleBn : ch.title}
+              {MODULES_DATA.map((m) => (
+                <option key={m.id} value={m.id}>
+                  {lang === 'bn' ? m.titleBn : m.title}
                 </option>
               ))}
             </select>
@@ -52,11 +51,11 @@ export function AppHeader({
           </div>
         </div>
 
-        {/* Center: Current Chapter Badge for Desktop */}
+        {/* Center: Current Module Badge for Desktop */}
         <div className="hidden md:flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-xs font-mono font-bold text-slate-300">
-            {lang === 'bn' ? currentChapter.titleBn : currentChapter.title}
+          <span className="text-xs font-mono font-bold text-slate-300 truncate max-w-sm">
+            {lang === 'bn' ? currentModule.titleBn : currentModule.title}
           </span>
         </div>
 

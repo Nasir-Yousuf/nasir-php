@@ -29,6 +29,8 @@ import { ArrayPlayground } from '../chapters/chapter4/ArrayPlayground';
 import { WhyPhpComparison } from '../chapters/chapter5/WhyPhpComparison';
 import { PhpFundamentalsSection } from '../chapters/chapter6/PhpFundamentalsSection';
 import { ProjectArchitectureSection } from '../chapters/chapter7/ProjectArchitectureSection';
+import { ComputerExecutionDiagram } from '../common/ComputerExecutionDiagram';
+import { Module14ComparisonLab } from '../modules/Module14ComparisonLab';
 
 export function PresentationModeDeck({ onClose, isFullscreen, onToggleFullscreen }) {
   const { lang, toggleLang, t } = useLanguage();
@@ -100,59 +102,73 @@ export function PresentationModeDeck({ onClose, isFullscreen, onToggleFullscreen
       component: <ParticleRequestLifecycle />
     },
     {
+      id: "computer-cpu",
+      chapterBadge: "HARDWARE & SERVER FOUNDATIONS",
+      title: "5. Functional Block Diagram of a Typical Computer (ALU, CU, RAM & I/O)",
+      titleBn: "৫. কম্পিউটারের কার্যকরী ব্লক ডায়াগ্রাম (ALU, CU, RAM ও ইনপুট/আউটপুট)",
+      component: <ComputerExecutionDiagram />
+    },
+    {
       id: "ch2-storage",
       chapterBadge: "CHAPTER 02 · DATA STORAGE",
-      title: "5. Relational Tables vs Document JSON Models (MySQL & MongoDB)",
-      titleBn: "৫. রিলেশনাল টেবিল বনাম ডকুমেন্ট মডেল (MySQL ও MongoDB)",
+      title: "6. Relational Tables vs Document JSON Models (MySQL & MongoDB)",
+      titleBn: "৬. রিলেশনাল টেবিল বনাম ডকুমেন্ট মডেল (MySQL ও MongoDB)",
       component: <DatabaseStorageExplainer />
     },
     {
       id: "ch2-sql",
       chapterBadge: "CHAPTER 02 · DATA STORAGE",
-      title: "6. Interactive SQL Query Engine & WHERE Filtering",
-      titleBn: "৬. এসকিউএল কুয়েরি ও ফিল্টারিং সিমুলেশন",
+      title: "7. Interactive SQL Query Engine & WHERE Filtering",
+      titleBn: "৭. এসকিউএল কুয়েরি ও ফিল্টারিং সিমুলেশন",
       component: <SqlSimulator />
     },
     {
       id: "ch3-transformation",
       chapterBadge: "CHAPTER 03 · THE BRIDGE",
-      title: "7. How Stored Database Rows Become PHP Arrays & JS Objects",
-      titleBn: "৭. ডাটাবেজ রেকর্ড যেভাবে PHP অ্যারে ও জাভাস্ক্রিপ্ট অবজেক্টে পরিণত হয়",
+      title: "8. How Stored Database Rows Become PHP Arrays & JS Objects",
+      titleBn: "৮. ডাটাবেজ রেকর্ড যেভাবে PHP অ্যারে ও জাভাস্ক্রিপ্ট অবজেক্টে পরিণত হয়",
       component: <DataTransformationPipeline />
     },
     {
       id: "ch4-arrays",
       chapterBadge: "CHAPTER 04 · DATA STRUCTURES",
-      title: "8. Understanding Arrays from Zero: PHP vs JavaScript",
-      titleBn: "৮. শুরু থেকে অ্যারে: পিএইচপি বনাম জাভাস্ক্রিপ্ট",
+      title: "9. Understanding Arrays from Zero: PHP vs JavaScript",
+      titleBn: "৯. শুরু থেকে অ্যারে: পিএইচপি বনাম জাভাস্ক্রিপ্ট",
       component: <ArrayDeepDive />
     },
     {
       id: "ch4-playground",
       chapterBadge: "CHAPTER 04 · DATA STRUCTURES",
-      title: "9. Interactive Array Laboratory: Dual PHP & JS Tabs",
-      titleBn: "৯. লাইভ অ্যারে ল্যাব: PHP ও JS উভয় ট্যাবে পরীক্ষা",
+      title: "10. Interactive Array Laboratory: Dual PHP & JS Tabs",
+      titleBn: "১০. লাইভ অ্যারে ল্যাব: PHP ও JS উভয় ট্যাবে পরীক্ষা",
       component: <ArrayPlayground />
     },
     {
-      id: "ch5-whyphp",
-      chapterBadge: "CHAPTER 05 · ARCHITECTURAL SELECTION",
-      title: "10. Why PHP? Traditional PHP vs Next.js Full-Stack",
-      titleBn: "১০. কেন পিএইচপি? ট্র্যাডিশনাল PHP বনাম আধুনিক Next.js",
-      component: <WhyPhpComparison />
-    },
-    {
       id: "ch6-fundamentals",
-      chapterBadge: "CHAPTER 06 · SYNTAX & WORKSHOP",
-      title: "11. PHP Fundamentals and Core Classroom Lessons",
+      chapterBadge: "PHP FUNDAMENTALS",
+      title: "11. Core PHP Fundamentals & Interactive Sandbox",
       titleBn: "১১. পিএইচপি ফান্ডামেন্টালস ও মূল পাঠ",
       component: <PhpFundamentalsSection />
     },
     {
+      id: "comparison-lab",
+      chapterBadge: "SYNTHESIS & COMPARISON",
+      title: "12. PHP vs JavaScript Interactive Translation Lab",
+      titleBn: "১২. পিএইচপি বনাম জাভাস্ক্রিপ্ট অনুবাদ ও সিনট্যাক্স ল্যাব",
+      component: <Module14ComparisonLab />
+    },
+    {
+      id: "ch5-whyphp",
+      chapterBadge: "ARCHITECTURAL SELECTION",
+      title: "13. Why PHP? Traditional PHP vs Next.js Full-Stack",
+      titleBn: "১৩. কেন পিএইচপি? ট্র্যাডিশনাল PHP বনাম আধুনিক Next.js",
+      component: <WhyPhpComparison />
+    },
+    {
       id: "ch7-project",
-      chapterBadge: "CHAPTER 07 · THE REAL PROJECT",
-      title: "12. Our Actual PHP Project: php-class-two Architecture",
-      titleBn: "১২. আমাদের আসল পিএইচপি প্রজেক্ট (php-class-two) আর্কিটেকচার",
+      chapterBadge: "THE REAL WORLD PROJECT",
+      title: "14. Our Actual PHP Project: php-class-two Architecture",
+      titleBn: "১৪. আমাদের আসল পিএইচপি প্রজেক্ট (php-class-two) আর্কিটেকচার",
       component: <ProjectArchitectureSection />
     }
   ];
